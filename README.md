@@ -17,7 +17,7 @@
 
 |カラム名|データ型|
 | ----- | ------ |
-|title|content|
+|title|content| 
 
 # herokuへのデプロイ方法
 1. heroku createでアプリを作成
