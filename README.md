@@ -19,3 +19,7 @@
 | ----- | ------ |
 |title|content|
 
+# herokuへのデプロイ方法
+1. heroku createでアプリを作成
+2. heroku buildpacks:set heroku/ruby,heroku buildpacks:add --index 1 heroku/nodejsでbuildpackを追加
+3. git push heroku step2:master でpush
