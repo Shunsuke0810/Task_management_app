@@ -21,9 +21,14 @@
     <%= form.text_field :content %>
   </div>
 
-   <div class="field">
+  <div class="field">
     <%= form.label :period %>
     <%= form.date_field :period %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, options_for_select(Task.statuses.keys.to_a), {prompt: "選択してください"}, {class: 'task-select'}%>
   </div>
 
   <div class="actions">
