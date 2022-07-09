@@ -3,9 +3,13 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
+  
     if params[:sort_update]
       @tasks = Task.latest
+    elsif params[:search]
+      @tasks = Task.all.where("title LIKE ?","%#{params[:search]}%")
     else
+      
       @tasks = Task.all.order(created_at: "ASC")
     end
   end
