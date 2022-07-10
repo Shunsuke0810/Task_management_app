@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :task do
-    title { 'test_title' }
-    content { 'test_content' }
+    title { 'A' }
+    content { 'B' }
     period { 2022-01-01 }
     status { '未着手' }
   end
