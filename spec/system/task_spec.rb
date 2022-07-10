@@ -58,16 +58,24 @@ RSpec.describe 'タスク管理機能', type: :system do
   # end
 
   describe '検索機能' do
-    context 'タイトル検索した場合' do
-      it '任意のタイトルが表示される' do
-      task = FactoryBot.create(:task, title: 'A', content: 'B', period: '2022-01-01', status: '未着手')
-      visit tasks_path
-      fill_in 'search_title', with: 'A'
-      click_button 'commit'
-      expect(page).to have_content 'A'
+    # context 'タイトル検索した場合' do
+    #   it '任意のタイトルが表示される' do
+    #   task = FactoryBot.create(:task, title: 'A', content: 'B', period: '2022-01-01', status: '未着手')
+    #   visit tasks_path
+    #   fill_in 'search_title', with: 'A'
+    #   click_button 'commit'
+    #   expect(page).to have_content 'A'
+    #   end
+    # end
+    context 'ステータス検索した場合' do
+      it '任意のステータスが表示される' do
+        task = FactoryBot.create(:task, title: 'A', content: 'B', period: '2022-01-01', status: '未着手')
+        visit tasks_path
+        select '未着手', from: 'search_status'
+        click_button 'commit'
+        expect(page).to have_content '未着手'
       end
     end
-
     # context '' do
     #   it '' do
     #   end
