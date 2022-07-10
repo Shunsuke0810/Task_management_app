@@ -1,23 +1,23 @@
 require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :system do
 
-  # describe '新規作成機能' do
-  #   context 'タスクを新規作成した場合' do
-  #     it '作成したタスクが表示される' do
-  #       # task = FactoryBot.create(:task, title: '買い物', content: 'だいこん', period: '2022-01-01' )
-  #       visit new_task_path
-  #       fill_in 'task[title]', with: '買い物'
-  #       fill_in 'task[content]', with:'だいこん'
-  #       fill_in 'task[period]', with: Date.today
-  #       select '未着手', from: 'task[status]'
-  #       click_button 'commit'
-  #       expect(page).to have_content '買い物'
-  #       expect(page).to have_content 'だいこん'
-  #       expect(page).to have_content Date.today
-  #       expect(page).to have_content '未着手'
-  #     end
-  #   end
-  # end
+  describe '新規作成機能' do
+    context 'タスクを新規作成した場合' do
+      it '作成したタスクが表示される' do
+        # task = FactoryBot.create(:task, title: '買い物', content: 'だいこん', period: '2022-01-01' )
+        visit new_task_path
+        fill_in 'task[title]', with: '買い物'
+        fill_in 'task[content]', with:'だいこん'
+        fill_in 'task[period]', with: Date.today
+        select '未着手', from: 'task[status]'
+        click_button 'commit'
+        expect(page).to have_content '買い物'
+        expect(page).to have_content 'だいこん'
+        expect(page).to have_content Date.today
+        expect(page).to have_content '未着手'
+      end
+    end
+  end
 
   # describe '一覧表示機能' do
   #   context '一覧画面に遷移した場合' do
@@ -58,15 +58,15 @@ RSpec.describe 'タスク管理機能', type: :system do
   # end
 
   describe '検索機能' do
-    # context 'タイトル検索した場合' do
-    #   it '任意のタイトルが表示される' do
-    #   task = FactoryBot.create(:task, title: 'A', content: 'B', period: '2022-01-01', status: '未着手')
-    #   visit tasks_path
-    #   fill_in 'search_title', with: 'A'
-    #   click_button 'commit'
-    #   expect(page).to have_content 'A'
-    #   end
-    # end
+    context 'タイトル検索した場合' do
+      it '任意のタイトルが表示される' do
+      task = FactoryBot.create(:task, title: 'A', content: 'B', period: '2022-01-01', status: '未着手')
+      visit tasks_path
+      fill_in 'search_title', with: 'A'
+      click_button 'commit'
+      expect(page).to have_content 'A'
+      end
+    end
     context 'ステータス検索した場合' do
       it '任意のステータスが表示される' do
         task = FactoryBot.create(:task, title: 'A', content: 'B', period: '2022-01-01', status: '未着手')
@@ -76,10 +76,16 @@ RSpec.describe 'タスク管理機能', type: :system do
         expect(page).to have_content '未着手'
       end
     end
-    # context '' do
-    #   it '' do
-    #   end
-    # end
+    context 'タイトルとステータスの両方で検索した場合' do
+      it '両方の条件を満たすタスクが表示される' do
+        task = FactoryBot.create(:task, title: 'A', content: 'B', period: '2022-01-01', status: '未着手')
+          visit tasks_path
+          fill_in 'search_title', with: 'A'
+          select '未着手', from: 'search_status'
+          click_button 'commit'
+          expect(page).to have_content 'A'
+      end
+    end
   end
 
 end
