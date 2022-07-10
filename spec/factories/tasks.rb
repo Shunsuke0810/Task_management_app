@@ -3,5 +3,6 @@ FactoryBot.define do
     title { 'test_title' }
     content { 'test_content' }
     period { 2022-01-01 }
+    status { '未着手' }
   end
 end
