@@ -3,17 +3,19 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-
-    if params[:sort_update]
+    if params[:search_title].present? && params[:search_status].present?
+      search_title_and_status = [params[:search_title],params[:search_status]]
+      @tasks = Task.search_title_and_status(search_title_and_status)
+    elsif params[:search_title].present?
+      search_title = params[:search_title]
+      @tasks = Task.search_title(search_title)
+    elsif params[:search_status].present?
+      search_status = params[:search_status]
+      @tasks = Task.search_status(search_status)
+    elsif params[:sort_update]
       @tasks = Task.latest
-    elsif params[:search_title]
-      @tasks = Task.all.where("title LIKE ?","%#{params[:search_title]}%")
-
-    # elsif params[:search_status]
-    #   @tasks = Task.where(status: params[:search_status])
     else
-      
-      @tasks = Task.all.order(created_at: "ASC")
+      @tasks = Task.default
     end
   end
 

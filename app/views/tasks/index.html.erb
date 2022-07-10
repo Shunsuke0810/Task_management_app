@@ -2,21 +2,12 @@
 
 <h1>Tasks</h1>
 
-
-
-<p>タイトル検索</p>
+<p>検索</p>
 <%= form_with url: tasks_path, method: :get, local: true do |form| %>
-  <div class="field">
+ <div class="field">
     <%= form.label :title %>
      <%= form.text_field :search_title %>
-  </div>
-   <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
 
-<p>ステータス検索</p>
-<%= form_with url: tasks_path, method: :get, local: true do |form| %>
   <div class="field">
     <%= form.label :status %>
     <%= form.select :search_status, options_for_select(Task.statuses.keys.to_a), {prompt: "選択してください"}, {class: 'task-select'}%>
@@ -24,6 +15,7 @@
    <div class="actions">
     <%= form.submit %>
   </div>
+  
 <% end %>
 
 <br>
