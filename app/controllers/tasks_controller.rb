@@ -12,8 +12,10 @@ class TasksController < ApplicationController
     elsif params[:search_status].present?
       search_status = params[:search_status]
       @tasks = Task.search_status(search_status)
-    elsif params[:sort_update]
-      @tasks = Task.latest
+    elsif params[:sort_period]
+      @tasks = Task.sort_period
+    elsif params[:sort_priority]
+      @tasks = Task.sort_priority
     else
       @tasks = Task.default
     end

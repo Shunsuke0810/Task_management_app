@@ -27,11 +27,13 @@
       <th>Content<br><br></th>
       <th>Period
       <br>
-      <%= link_to '並替え', tasks_path(sort_update: "true") %>
+      <%= link_to '並替え', tasks_path(sort_period: "true") %>
       </th>
       <th>Status<br><br></th>
-      <th>Priority<br><br></th>
-
+      <th>Priority
+      <br>
+      <%= link_to '並替え', tasks_path(sort_priority: "true") %>
+      <br></th>
       <th colspan="3"></th>
     </tr>
   </thead>
