@@ -31,6 +31,11 @@
     <%= form.select :status, options_for_select(Task.statuses.keys.to_a), {prompt: "選択してください"}, {class: 'task-select'}%>
   </div>
 
+  <div class="field">
+    <%= form.label :priority %>
+    <%= form.select :priority, options_for_select(Task.priorities.keys.to_a), {prompt: "選択してください"}, {class: 'task-select'}%>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
