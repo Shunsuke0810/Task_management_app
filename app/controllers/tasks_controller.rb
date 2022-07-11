@@ -5,17 +5,17 @@ class TasksController < ApplicationController
   def index
     if params[:search_title].present? && params[:search_status].present?
       search_title_and_status = [params[:search_title],params[:search_status]]
-      @tasks = Task.search_title_and_status(search_title_and_status)
+      @tasks = Task.search_title_and_status(search_title_and_status).page(params[:page]).per(5)
     elsif params[:search_title].present?
       search_title = params[:search_title]
-      @tasks = Task.search_title(search_title)
+      @tasks = Task.search_title(search_title).page(params[:page]).per(5)
     elsif params[:search_status].present?
       search_status = params[:search_status]
-      @tasks = Task.search_status(search_status)
+      @tasks = Task.search_status(search_status).page(params[:page]).per(5)
     elsif params[:sort_period]
-      @tasks = Task.sort_period
+      @tasks = Task.sort_period.page(params[:page]).per(5)
     elsif params[:sort_priority]
-      @tasks = Task.sort_priority
+      @tasks = Task.sort_priority.page(params[:page]).per(5)
     else
       @tasks = Task.default.all.page(params[:page]).per(5)
     end
