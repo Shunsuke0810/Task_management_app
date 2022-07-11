@@ -1,6 +1,9 @@
 FactoryBot.define do
   factory :task do
-    title { 'test_title' }
-    content { 'test_content' }
+    title { 'A' }
+    content { 'B' }
+    period { Date.today }
+    status { '未着手' }
+    priority { '高' }
   end
 end
