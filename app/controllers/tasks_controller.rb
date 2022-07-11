@@ -17,7 +17,7 @@ class TasksController < ApplicationController
     elsif params[:sort_priority]
       @tasks = Task.sort_priority
     else
-      @tasks = Task.default
+      @tasks = Task.default.all.page(params[:page]).per(5)
     end
   end
 

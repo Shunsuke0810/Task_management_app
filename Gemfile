@@ -65,3 +65,4 @@ gem 'rexml'
 
 gem 'pry-rails'
 
+gem 'kaminari'
