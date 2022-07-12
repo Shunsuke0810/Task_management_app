@@ -19,7 +19,7 @@ class TasksController < ApplicationController
     else
       @tasks = Task.default.all.page(params[:page]).per(5)
     end
-  end
+  end 
 
   # GET /tasks/1 or /tasks/1.json
   def show
