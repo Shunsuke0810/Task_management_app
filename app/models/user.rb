@@ -7,6 +7,6 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }
   before_validation { email.downcase! }
   
-  has_many :tasks, dependent: :destroy
+  has_many :tasks, dependent: :destroy 
 
 end
