@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_action :admin_user
+  before_action :if_not_admin
 
   def index
     @users = User.all.includes(:tasks)
@@ -33,8 +33,9 @@ class Admin::UsersController < ApplicationController
   end
 
   private
-  def admin_user
-    redirect_to(root_path) unless current_user.admin?
+
+  def if_not_admin
+    redirect_to tasks_path, notice: "管理者以外はアクセスできません" unless current_user.admin?
   end
 
   def user_params
