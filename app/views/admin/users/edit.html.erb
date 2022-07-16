@@ -1,5 +1,7 @@
 <h1>Edit user</h1>
 
+<p>
+
 <% if @user.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
@@ -23,6 +25,9 @@
 
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
+
+  <%= f.label :admin %>
+  <%= f.select :admin, ([["admin",true],["user",false]]), {prompt: "選択してください"}, {class: 'task-select'}%>
 
   <%= f.submit "edit account" %>
 <% end %>
