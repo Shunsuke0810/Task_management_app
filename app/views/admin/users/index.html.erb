@@ -1,0 +1,35 @@
+
+<p>ユーザー一覧</p>
+
+<%= link_to 'User create', new_admin_user_path %>
+<br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>User</th>
+      <th>email</th>
+      <th>task count</th>
+      <th>administrater<th>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.tasks.count %></td>
+        <% if user.admin? %>
+          <td> admin </td>
+        <% else %>
+          <td> user </td>
+        <% end %>
+        <td><%= link_to 'Show', user, class: "btn btn-primary" %></td>
+        <td><%= link_to 'Edit', edit_admin_user_path(user), class: "btn btn-success" %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
