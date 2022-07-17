@@ -114,8 +114,8 @@ RSpec.describe 'ユーザーモデル機能', type: :system do
         fill_in 'session[email]', with: 'admin@admin.com'
         fill_in 'session[password]', with: 'aaaaaa'
         click_button 'commit'
-        visit edit_admin_user_path(id:1)
-        expect(current_path).to eq edit_admin_user_path(id:1)
+        visit admin_user_path(id:1)
+        expect(current_path).to eq admin_user_path(id:1)
       end
     end
     context '管理ユーザーが編集画面からuser_aのname:aをneme:cに変更'do
@@ -124,7 +124,13 @@ RSpec.describe 'ユーザーモデル機能', type: :system do
         fill_in 'session[email]', with: 'admin@admin.com'
         fill_in 'session[password]', with: 'aaaaaa'
         click_button 'commit'
-        
+        visit edit_admin_user_path(id:1)
+        fill_in 'user[name]', with: 'c'
+        fill_in 'user[email]', with: 'aaa@aaa.com'
+        fill_in 'user[password]', with: 'aaaaaa'
+        fill_in 'user[password_confirmation]', with: 'aaaaaa'
+        click_button 'commit'
+        expect(page).to have_content 'c'
       end
     end
     context ''do

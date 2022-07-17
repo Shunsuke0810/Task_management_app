@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
 
   def show
-    if current_user == User.find(params[:id])
+    if current_user == User.find(params[:id]) || User.find_by(admin: true)
     @user = User.find(params[:id])
     @tasks = Task.where(user_id: @user.id)
     else
