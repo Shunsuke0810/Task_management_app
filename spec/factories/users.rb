@@ -19,3 +19,14 @@ FactoryBot.define do
     admin {'false'}
   end
 end
+
+FactoryBot.define do
+  factory :user_admin, :class => 'user' do
+    id { 3 }
+    name { 'admin' }
+    email {'admin@admin.com'}
+    password {'aaaaaa'}
+    password_confirmation {'aaaaaa'}
+    admin {'true'}
+  end
+end
