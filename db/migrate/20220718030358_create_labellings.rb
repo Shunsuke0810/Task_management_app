@@ -7,5 +7,7 @@ class CreateLabellings < ActiveRecord::Migration[6.0]
       t.index ["task_id"], name: "index_labellings_on_task_id"
       t.timestamps
     end
+    add_foreign_key :labellings, :labels
+    add_foreign_key :labellings, :tasks
   end
 end
