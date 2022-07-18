@@ -55,5 +55,24 @@ Task.create(
   user_id: 3
 )
 
+Label.create(
+  name: "Ruby",
+  created_at: "2022-07-17",
+  updated_at: "2022-07-17",
+)
+
+Label.create(
+  name: "PHP",
+  created_at: "2022-07-17",
+  updated_at: "2022-07-17",
+)
+
+Label.create(
+  name: "Python",
+  created_at: "2022-07-17",
+  updated_at: "2022-07-17",
+)
+
+
 
 
