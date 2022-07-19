@@ -8,7 +8,6 @@
 
 10.times do |n|
 User.create(
-  id: n + 2,
   name: "name#{n + 1}",
   email: "#{n + 1}@gmail.com",
   password: "aaaaaa",
@@ -19,7 +18,6 @@ end
 
 10.times do |n|
 Task.create(
-  id: n + 1,
   title: "#{n + 1}",
   content: "task",
   created_at: "2022-07-16",
