@@ -18,6 +18,7 @@ class TasksController < ApplicationController
       @tasks = current_user.tasks.sort_priority.page(params[:page]).per(5)
     else
       @tasks = current_user.tasks.default.all.page(params[:page]).per(5)
+      @tasks = @tasks.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
     end
   end 
 
@@ -78,6 +79,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:title, :content, :period, :status, :priority)
+      params.require(:task).permit(:title, :content, :period, :status, :priority, { label_ids: [] })
     end
 end
